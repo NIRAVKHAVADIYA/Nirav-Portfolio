@@ -1,10 +1,13 @@
 .footer{
     width: 100vw;
     height: 4rem;
-    background: rgb(40, 40, 40);
+    background: rgba(2, 6, 23, 0.9); /* matches site */
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 300;
-    font-size: small;
+    font-size: 0.85rem;
+    color: #d1d5db; /* improved text */
+    border-top: 1px solid rgba(255,255,255,0.08); /* subtle divider */
+    backdrop-filter: blur(8px); /* premium look */
 }

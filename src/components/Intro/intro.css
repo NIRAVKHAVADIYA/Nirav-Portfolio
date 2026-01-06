@@ -1,22 +1,33 @@
 #intro{
-    height:calc(100vh - 4rem) ;
+    height: calc(100vh - 4rem);
     width: 100vw;
     max-width: 100rem;
     margin: 0 auto;
     overflow: hidden;
     position: relative;
+    
 }
 
+
+/* background video */
 .bg{
     position: absolute;
-    top: 4rem;
-    right: 5rem;
+    top: -4rem;
+    right: 3rem;
     z-index: -1;
     object-fit: cover;
     height: 80vh;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+     box-shadow:
+        0 0 0 1px rgba(56,189,248,0.25),
+        0 20px 60px rgba(56,189,248,0.12),
+        0 0 80px rgba(56,189,248,0.08);
 
 }
 
+
+/* text content */
 .introcontent{
     height: 100vh;
     width: 100vw;
@@ -26,29 +37,74 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-
+    color: #f9fafb; /* added */
+     position: relative;
+    z-index: 1; /* text above video */
 }
+
 .hello{
     font-size: 1.57rem;
-    font-weight: 100;
+    font-weight: 300; /* improved */
+    color: #9ca3af; /* added */
+    margin-bottom: 0.5rem; /* added */
 }
 
 .introname{
-    color: yellow;
+    color: #38bdf8; /* improved */
 }
 
 .intopara{
-    font-size: medium;
-    font-weight: 200;
+    font-size: 1rem; /* improved */
+    font-weight: 300;
+    max-width: 520px; /* added */
+    line-height: 1.6; /* added */
+    color: #d1d5db; /* added */
+    margin-top: 0.75rem; /* added */
 }
 
 .btn{
-    background: white;
-    margin: 1rem 0;
-    padding: 0.75rem 2rem;
+    background: #ffffff;
+    color: #020617;
+    margin: 1.2rem 0;
+    padding: 0.75rem 2.2rem;
     border: none;
-    border-radius: 1.5rem;
+    border-radius: 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
 }
+
+/* subtle glow animation */
+.btn::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.7),
+        transparent
+    );
+    transition: all 0.6s ease;
+}
+
+.btn:hover::before{
+    left: 100%;
+}
+
+.btn:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(255,255,255,0.35);
+}
+
+
+
 .btnImg{
     object-fit: cover;
     margin: 0 0.25rem;
@@ -56,6 +112,7 @@
     margin-right: 10px;
 }
 
+/* responsive */
 @media screen and (max-width:840px) {
     .bg{
         right: -10vw;
@@ -70,11 +127,10 @@
 
 @media screen and (max-width:480px) {
     .bg{
-        height: 40vh;
+        height: 38vh;
         object-fit: cover;
-        top: 0;
-        right: 3vh;
-
+        top: -3vh;
+        right: 2vh;
     }
     .introcontent{
         margin-top: 12vh;

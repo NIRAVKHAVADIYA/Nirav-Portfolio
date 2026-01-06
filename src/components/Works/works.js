@@ -12,24 +12,26 @@ import a2 from '../../assets/3.jpg';
 
 const Works = () => {
   return (
-        <section id='works'>
-            <h2 className='worksTitle'>My Portfolio</h2>
-            <span className='worksDesc'>hello this is for demo this text is not ezists in real worSoftware engineer with a passion for continuous learning and staying current with
-                     emerging technologies to build innovative solutions.ld.</span>
-            <div className='worksImgs'>
-                <img src={a1} alt='' className='worksImg' />
-                <img src={a2} alt='' className='worksImg' />
-                <img src={a3} alt='' className='worksImg' />
-                <img src={p1} alt='' className='worksImg' />
-                <img src={p2} alt='' className='worksImg' />
-                <img src={p3} alt='' className='worksImg' />
-                <img src={p4} alt='' className='worksImg' />
-                <img src={p5} alt='' className='worksImg' />
-                <img src={p6} alt='' className='worksImg' />
-            </div>
-            {/* <button className='workBtn'>See More</button> */}
-        </section>
-    )
-}
+    <section id='works'>
+      <h2 className='worksTitle'>My Portfolio</h2>
+      <span className='worksDesc'>
+        Software engineer with a passion for continuous learning and staying
+        current with emerging technologies to build innovative solutions.
+      </span>
 
-export default Works
+      <div className='worksImgs'>
+        <img src={a1} alt='' className='worksImgApp' />
+        <img src={a2} alt='' className='worksImgApp' />
+        <img src={a3} alt='' className='worksImgApp' />
+        <img src={p1} alt='' className='worksImg' />
+        <img src={p2} alt='' className='worksImg' />
+        <img src={p3} alt='' className='worksImg' />
+        <img src={p4} alt='' className='worksImg' />
+        <img src={p5} alt='' className='worksImg' />
+        <img src={p6} alt='' className='worksImg' />
+      </div>
+    </section>
+  );
+};
+
+export default Works;

@@ -8,66 +8,101 @@
     justify-content: center;
     text-align: center;
     margin: 0 auto;
+    padding: 3rem 1rem;
+    background: #020617; /* matches other sections */
 }
 
+/* title */
 .skillTitle{
     font-size: 3rem;
-    font-weight: 600;
-    padding-top: 3rem;
+    font-weight: 700;
     margin-bottom: 1.5rem;
+    color: #f9fafb;
 }
 
+/* description */
 .skillDesc{
     font-weight: 300;
     font-size: 1rem;
     max-width: 60rem;
     padding: 0 2rem;
+    line-height: 1.7;
+    color: #d1d5db;
 }
 
+/* skill bars container */
 .skillBars{
-    margin: 1.5rem;
+    margin: 2rem 0;
     width: 100vw;
     max-width: 80%;
     text-align: left;
 }
 
+/* individual skill card */
 .skillBar{
     display: flex;
-    margin: 1rem;
-    padding: 1.5rem 1rem;
-    border-radius: 0.5rem;
-    background: rgb(50, 50, 50);
+    align-items: center;
+    margin: 1rem 0;
+    padding: 1.5rem 1.5rem;
+    border-radius: 0.75rem;
+    background: rgba(255, 255, 255, 0.05); /* glass look */
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: all 0.3s ease;
 }
 
+/* hover effect */
+.skillBar:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(56,189,248,0.25);
+}
+
+/* skill icon */
 .skillBarImg{
     object-fit: cover;
-    border-radius: 0.3rem;
-    height: 3rem;
-    width: 3rem;
-    margin-right: 2rem;
+    border-radius: 0.5rem;
+    height: 3.2rem;
+    width: 3.2rem;
+    margin-right: 1.5rem;
+}
+
+/* text */
+.skillBarText h4{
+    color: #e5e7eb;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
 }
 
 .skillBarText>p{
     font-size: 0.9rem;
-    font-weight: 200;
+    font-weight: 300;
+    color: #cbd5f5;
 }
 
+/* responsive */
 @media screen and (max-width:720px){
+    .skillBars{
+        max-width: 95%;
+    }
     .skillBarText>p{
-        font-size: 2vw;
-
+        font-size: 0.95rem;
     }
 }
 
 @media screen and (max-width:480px){
-    .skillBarText>p{
-        font-size: 3vw;
+    .skillBar{
+        flex-direction: column;
+        text-align: center;
     }
     .skillBarImg{
-        height: 5.24rem;
-        width: 5rem;
+        height: 4.5rem;
+        width: 4.5rem;
+        margin: 0 0 1rem 0;
     }
-    skillBarText>h2{
-        font-size: 5vw; 
+    .skillBarText h4{
+        font-size: 5vw;
+    }
+    .skillBarText>p{
+        font-size: 3.5vw;
     }
 }

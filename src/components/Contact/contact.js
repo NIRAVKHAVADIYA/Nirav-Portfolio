@@ -1,67 +1,117 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import './contact.css';
 import emailjs from '@emailjs/browser';
 
-import c1 from '../../assets/c1.jpg';
-//import c2 from '../../assets/c2.jpg';
-//import c3 from '../../assets/c3.png';
-//import c4 from '../../assets/c4.jpg';
-
-import co1 from '../../assets/co1.png';
-import co2 from '../../assets/co2.png';
-import co3 from '../../assets/co3.png';
-import co4 from '../../assets/co4.png';
+import co1 from '../../assets/co1.png'; // GitHub
+import co2 from '../../assets/co2.png'; // LinkedIn
+import co3 from '../../assets/co3.png'; // Email
+import co4 from '../../assets/co4.png'; // Portfolio
 
 const Contact = () => {
-    const form = useRef();
-    const sendEmail = (e) => {
-    e.preventDefault();
+  const form = useRef();
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState('');
 
-    emailjs
-      .sendForm('service_2mw6auo', 'template_wuosbp5', form.current,'VGRVFSuVwnnPLCewn')
-      .then(
-        () => {
-          console.log('SUCCESS!');
-          alert("Email Sent!!");
-          e.target.reset();
-        },
-        (error) => {
-          console.log('FAILED...', error.text);
-        },
-      );
-  };
+ const sendEmail = (e) => {
+  e.preventDefault();
+  setLoading(true);
+  setStatus('');
+
+  emailjs
+    .sendForm(
+      'service_2mw6auo',
+      'template_wuosbp5',
+      form.current,
+      'VGRVFSuVwnnPLCewn'
+    )
+    .then(
+      () => {
+        setLoading(false);
+        setStatus('success');
+        form.current.reset();
+
+        // 🔹 auto remove success message
+        setTimeout(() => {
+          setStatus('');
+        }, 3000);
+      },
+      () => {
+        setLoading(false);
+        setStatus('error');
+
+        // 🔹 auto remove error message
+        setTimeout(() => {
+          setStatus('');
+        }, 3000);
+      }
+    );
+};
+
+
   return (
-    <section id='contactPage'>
-        {/* <div id='clients'>
-            <h1 className='contactPageTitle'>My clients</h1>
-            <p className='clientDesc'>hello this is for demo this text is not ezists in real worSoftware engineer with a passion for continuous learning and staying current with
-                     emerging technologies to build innovative solutions.ld.
-            </p>
-            <div className='clientImgs'>
-                <img src={c1} alt='' className='clientImg'/>
-                <img src={c1} alt='' className='clientImg'/>
-                <img src={c1} alt='' className='clientImg'/>
-                <img src={c1} alt='' className='clientImg'/>
-            </div>
-        </div> */}
-        <div id='contact'>
-            <h1 className='contactPageTitle'>Contact Me</h1>
-            <span className='contactDesc'>Fill out this form for work with me and get opportunitties.</span>
-            <form className='contactForm' ref={form} onSubmit={sendEmail}>
-                <input type='text' className='name' placeholder='Your Name' name='name'/>
-                <input type='email' className='email' placeholder='Your Email' name='email'/>
-                <textarea className='msg' name='message' rows={5} placeholder='Your Message'></textarea>
-                <button type='submit' value='Send' className='submitBtn'>Submit</button>
-                <div className='links'>
-                    <img src={co1} alt='' className='link' />
-                    <img src={co2} alt='' className='link' />
-                    <img src={co3} alt='' className='link' />
-                    <img src={co4} alt='' className='link' />
-                </div>
-            </form>
-        </div>
-    </section>
-  )
-}
+    <section id="contactPage">
+      <div id="contact">
+        <h1 className="contactPageTitle">Contact Me</h1>
 
-export default Contact
+        <span className="contactDesc">
+          Have a project or opportunity? Let’s connect and build something great together.
+        </span>
+
+        <form className="contactForm" ref={form} onSubmit={sendEmail}>
+          <input
+            type="text"
+            className="name"
+            placeholder="Your Name"
+            name="name"
+            required
+          />
+
+          <input
+            type="email"
+            className="email"
+            placeholder="Your Email"
+            name="email"
+            required
+          />
+
+          <textarea
+            className="msg"
+            name="message"
+            rows={5}
+            placeholder="Your Message"
+            required
+          ></textarea>
+
+          <button type="submit" className="submitBtn" disabled={loading}>
+            {loading ? 'Sending...' : 'Send Message'}
+          </button>
+
+          {status === 'success' && (
+            <p className="successMsg">✅ Message sent successfully!</p>
+          )}
+
+          {status === 'error' && (
+            <p className="errorMsg">❌ Something went wrong. Please try again.</p>
+          )}
+
+          <div className="links">
+            <a href="https://github.com/NIRAVKHAVADIYA" target="_blank" rel="noreferrer">
+              <img src={co1} alt="GitHub" className="link" />
+            </a>
+            <a href="https://www.linkedin.com/in/nirav-khavadiya-0a464328a/" target="_blank" rel="noreferrer">
+              <img src={co2} alt="LinkedIn" className="link" />
+            </a>
+            <a href="https://x.com/Nirav_patel_001">
+              <img src={co3} alt="Email" className="link" />
+            </a>
+            <a href="https://www.instagram.com/iam_nk_001/?next=%2F&hl=en" target="_blank" rel="noreferrer">
+              <img src={co4} alt="Portfolio" className="link" />
+            </a>
+          </div>
+        </form>
+      </div>
+    </section>
+  );
+};
+
+export default Contact;
